@@ -772,6 +772,3 @@ if __name__ == "__main__":
 
     # if parsed_arguments.write:
     scrapper.write_values_to_file()
-
-# wta = MatchScrapper(filename='2009.html')
-# wta.load('29dac850d5.json')
