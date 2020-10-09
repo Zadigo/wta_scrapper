@@ -17,3 +17,15 @@ wta.build('player-matches__tournament', player_name='Eugenie Bouchard', date_of_
 ```
 wta.write_values_to_file()
 ```
+
+
+### Context processor
+
+You can also use the instance of the scrapper as a context:
+
+```
+with wta as w:
+    print(w)
+
+>> [OrderedDict([(...)])]
+```

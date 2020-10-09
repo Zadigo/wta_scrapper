@@ -17,7 +17,6 @@ from sklearn.calibration import LabelEncoder
 from wta_scrapper.mixins import Mixins
 from wta_scrapper.models import Tournament
 
-
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 TEMPLATES = os.listdir(os.path.join(BASE_DIR, 'html'))
@@ -38,12 +37,12 @@ def autodiscover():
 
 
 def init_logger(name):
-    logger = logging.getLogger(name)
-    logger.setLevel(logging.DEBUG)
+    logger = logging.Logger(name)
 
-    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    format_str = '%(asctime)s :: %(name)s - %(levelname)s - %(message)s'
+    formatter = logging.Formatter(format_str, datefmt='%Y-%m-%d')
 
-    handler = logging.FileHandler('wta.log')
+    handler = logging.StreamHandler()
     handler.setFormatter(formatter)
 
     logger.addHandler(handler)
@@ -51,6 +50,16 @@ def init_logger(name):
 
 
 class Score:
+    """
+    Format the score in order for it to be compatible
+    with numpy
+
+    Parameters
+    ----------
+
+        score (str): the tennis score as a string
+        match state (bool, optional): the match result W or L. Defaults to None
+    """
     def __init__(self, score:str, match_state=None):
         self.score_is_valid = False
 
@@ -61,6 +70,8 @@ class Score:
         # t - tie break
         regexes = [
             ('other', r'^(Bye|Retired)'),
+            # 5-1 Retired / 6-1 5-1 Retired
+            # ('n-r', r'^(\d\-\d)+\s?(Retired)$'),
             # 6-1 6-1
             ('n-n', r'^([6|7]\-[0-5])\s?([6|7]\-[0-5])$'),
             # 1-6 1-6
@@ -129,12 +140,18 @@ class Score:
         """
         Parses the score and returns a numpy array
         of each score value
+
+        Parameters
+        ----------
+
+            score (str): score a string
         """
         individual_numbers = []
         try:
             for value in score:
-                lhs, rhs = value.split('-')
-                individual_numbers.append([lhs, rhs])
+                if value is not None:
+                    lhs, rhs = value.split('-')
+                    individual_numbers.append([lhs, rhs])
         except:
             self.score_is_valid = False
             return []
@@ -197,6 +214,17 @@ class Score:
             str_scores.append(score)
         return ' '.join(str_scores)
 
+    @property
+    def games_won(self):
+        number_of_sets = self.score.shape[0]
+        games_won = 0
+        for i in range(number_of_sets):
+            value = self.score[i, 0]
+            if value == 6 or value == 7:
+                value = self.score[i, 1]
+            games_won += value
+        return games_won
+
     def copy(self):
         klass = self.__class__(self.literal_score)
         return klass
@@ -213,6 +241,19 @@ class MatchScrapper(Mixins):
 
         self.soup = soup
         self.tournaments = []
+
+    def __enter__(self):
+        return self.tournaments
+
+    def __exit__(self, type, value, traceback):
+        return False
+
+    def __getitem__(self, index):
+        return self.tournaments[0][index]
+
+    def __eq__(self, value):
+        keys = list(self.tournaments.keys())
+        return value in keys
 
     def build(self, f, player_name=None, 
               year=None, date_as_string=True, 
@@ -303,19 +344,6 @@ class MatchScrapper(Mixins):
             print(message)
         return self.tournaments
 
-    def __enter__(self):
-        return self.tournaments
-
-    def __exit__(self, type, value, traceback):
-        return False
-
-    def __getitem__(self, index):
-        return self.tournaments[0][index]
-
-    def __eq__(self, value):
-        keys = list(self.tournaments.keys())
-        return value in keys
-
     @property
     def number_of_tournaments(self):
         return len(self.tournaments)
@@ -398,8 +426,9 @@ class MatchScrapper(Mixins):
         and their seeding if available
         """
         player_rank_during_tournament = {
+            'rank': None,
             'entered_as': None,
-            'title': None
+            'seed_title': None
         }
         # Try to get the rank of the player
         # during the tournament -;
@@ -412,15 +441,15 @@ class MatchScrapper(Mixins):
         entry_types = ['W', 'Q']
         if rank.text.isnumeric():
             player_rank = int(rank.text)
-            player_rank_during_tournament = {
+            player_rank_during_tournament.update({
                 'rank': player_rank
-            }
+            })
         else:
             seed_text = self._normalize(rank.text)
             if seed_text in entry_types:
-                player_rank_during_tournament = {
+                player_rank_during_tournament.update({
                     'entered_as': seed_text
-                }
+                })
 
         # There might also have both,
         # so check also for that
@@ -429,14 +458,14 @@ class MatchScrapper(Mixins):
             if not seed_section.is_empty_element:
                 seed_text = self._normalize(seed_section.text)
                 if seed_text in entry_types:
-                    player_rank_during_tournament = {
+                    player_rank_during_tournament.update({
                         'entered_as': seed_text,
-                        'title': seed_section.get_attribute_list('title')[-1]
-                    }
+                        'seed_title': seed_section.get_attribute_list('title')[-1]
+                    })
                 elif seed_text.isnumeric():
-                    player_rank_during_tournament = {
+                    player_rank_during_tournament.update({
                         'entered_as': int(seed_text)
-                    }
+                    })
 
         if using is not None:
             # Dynamically find the root key of the dictionnary
@@ -498,7 +527,7 @@ class MatchScrapper(Mixins):
             base = using
 
         base_match_template = {
-            'name': None,
+            'opp_name': None,
             'link': None,
             'nationality': None,
             'details': {}
@@ -509,7 +538,7 @@ class MatchScrapper(Mixins):
             opponent_link = row.find('a')
             if opponent_link is not None:
                 base_match.update({
-                    'name': opponent_link.get_attribute_list('title')[-1],
+                    'opp_name': opponent_link.get_attribute_list('title')[-1],
                     'link': opponent_link.get_attribute_list('href')[-1],
                 })
 
@@ -532,7 +561,7 @@ class MatchScrapper(Mixins):
                             base_match['nationality'] = None
                             
                     if i == 2:
-                        base_match['details']['rank'] = child.get_text()
+                        base_match['details']['opp_rank'] = child.get_text()
 
                     if i == 3:
                         base_match['details']['result'] = child.get_text()
@@ -548,6 +577,13 @@ class MatchScrapper(Mixins):
 
             base_match.clear()
             base_match = base_match_template.copy()
+            # For whatever reasons, when modifying the details
+            # section of base_match, it also modifies the details
+            # section of bae_match_template despite the clear().
+            # This results in the same score being appended in the
+            # final dictionnary and the match results being the same
+            # when constructing the matches
+            base_match['details'] = {}
         return base
 
     def _date_difference_from_today(self, d):
@@ -567,13 +603,14 @@ class MatchScrapper(Mixins):
         Voluntarily, the initital dictionnaries that were created by tournament
         contain the raw data with spaces and/or new lines. This section takes
         them, cleans the data within them and prepares them for final use
-        """
+        """        
         pre_final_dict = self.tournaments
         tournaments = []
 
         # Done in order to initiate a
         # reverse countdown for iDs
         tournaments_count = len(pre_final_dict)
+        self.logger.info(f'Finalizing for {tournaments_count} tournaments')
 
         # Some of the tournaments names are very long
         # and not really adequate for being a dictionnary
@@ -640,6 +677,7 @@ class MatchScrapper(Mixins):
             tournaments.append(blank_dict)
         tournaments.append(kwargs)
         self.tournaments = tournaments
+        self.logger.info('Adapting...')
 
         # TODO: Parsing the score is kind of special,
         # so limit this functionnaly for now to cases
@@ -658,9 +696,8 @@ class MatchScrapper(Mixins):
         #                     # 'games_count': score.number_of_games
         #                 }
 
-        message = f'We found and built {len(self.tournaments) - 1} tournaments.'
-        self.logger.info(message)
-        print(message)
+        self.logger.info((f'Found and built {len(self.tournaments) - 1} tournaments'))
+        self.logger.info("Call 'write_values_to_file' if you wish to output the values to a file")
 
     @lru_cache(maxsize=5)
     def get_matches(self):
@@ -696,7 +733,10 @@ class MatchScrapper(Mixins):
                 try:
                     json.dump(values, f, indent=4)
                 except TypeError as e:
-                    print('If you get this error, make sure "date_as_string" is set to true so that the date can be serialized.', e.args)
+                    self.logger.error(
+                        'Make sure "date_as_string" is set to true so that the date can be serialized correctly',
+                        stack_info=True
+                    )
                     raise
 
             if file_format == 'csv':
@@ -706,47 +746,32 @@ class MatchScrapper(Mixins):
                 writer.write_rows(values)
         self.logger.info(f'Created file {file_to_write}')
 
-    @cached_property
-    def fit_to_csv(self, write=False):
-        return_values = []
-        base = []
-        for tournament in self.tournaments:
-            base.append(list(tournament.keys())[:1])
-            for key, value in tournament.items():
-                base.append(value)
-                matches = value.pop('matches')
-                for match in matches:
-                    for detail in match.values():
-                        base.append(detail)
-            return_values.append(base)
-            return_values = []
-        if write:
-            self.write_values_to_file(return_values)
-        return return_values
-
     def load(self, filename):
         """
         Load a result file and return its data
         """
         with open(filename, 'r') as f:
             data = json.load(f)
+        self.logger.info(f'Loading {filename}')
         return Tournament(data)
 
-# if __name__ == "__main__":
-#     parser = argparse.ArgumentParser(description='Parse an HTML page for WTA matches')
-#     parser.add_argument('-n', '--filename', type=str, required=True)
-#     parser.add_argument('--filter', type=str, required=True, help='A value to filter the main matches section of the page')
-#     parser.add_argument('--write', type=bool, help='Write parsed values to a JSON or CSV file')
-#     parser.add_argument('--format', type=str, choices=['json', 'csv'], help='The format of the output file')
-#     parsed_arguments = parser.parse_args()
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='Parse an HTML page for WTA matches')
+    parser.add_argument('-n', '--filename', type=str, required=True)
+    parser.add_argument('--write', type=bool, help='Write parsed values to a JSON or CSV file')
+    parser.add_argument('--filter', type=str, required=True, help='A value used to filter the html tags on the WTA page')
+    parser.add_argument('--format', type=str, choices=['json', 'csv'], help='The format of the output file')
+
+    parser.add_argument('--player-name', type=str, help='Name of the player to parse file for')
+    parser.add_argument('--year', type=int, help='Year of the tournaments')
+    parsed_arguments = parser.parse_args()
     
-#     scrapper = MatchScrapper(filename=parsed_arguments.filename)
-#     scrapper.build(parsed_arguments.filter)
+    scrapper = MatchScrapper(filename=parsed_arguments.filename)
+    scrapper.build(parsed_arguments.filter)
 
-#     if parsed_arguments.write:
-#         scrapper.write_values_to_file(scrapper.tournaments, file_format=parsed_arguments.format)
+    # if parsed_arguments.write:
+    scrapper.write_values_to_file()
 
-
-wta = MatchScrapper(filename='2012.html')
-wta.build('player-matches__tournament', player_name='Eugenie Bouchard', date_of_birth='1994-02-25')
-wta.write_values_to_file()
+# wta = MatchScrapper(filename='2009.html')
+# wta.load('29dac850d5.json')
