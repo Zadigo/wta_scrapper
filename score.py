@@ -185,8 +185,11 @@ def expand_scores(items, filename=None, update_file=False):
     From a JSON file, implement additional information
     about a tennis score
 
-    Args:
-        values (list): list of tournaments or matches
+    Args
+
+        items (list): list of tournaments or matches
+        filename (str, optional):
+        update_file (bool, optional): Defaults to True
     """
     characteristics = items.pop(-1)
     for item in items:
@@ -196,7 +199,7 @@ def expand_scores(items, filename=None, update_file=False):
 
                 match['details']['first_set'] = score.has_won_first_set
                 match['details']['sets_literal'] = score.number_of_sets_literal
-                match['details']['total_games'] = score.total_games
+                match['details']['total_games'] = int(score.total_games)
                 match['details']['has_tie_break'] = score.has_tie_breaks
                 match['details']['tie_breaks'] = score.tie_breaks
 

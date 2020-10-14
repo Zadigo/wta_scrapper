@@ -5,15 +5,15 @@ import json
 import logging
 import os
 import secrets
-from collections import OrderedDict, deque, defaultdict
-from functools import cached_property, lru_cache
+from collections import OrderedDict, defaultdict, deque
+from functools import lru_cache
 
 from bs4 import BeautifulSoup
 
 from wta_scrapper.mixins import Mixins
 from wta_scrapper.models import Query
-from wta_scrapper.utils import autodiscover, BASE_DIR
 from wta_scrapper.score import Score
+from wta_scrapper.utils import BASE_DIR, autodiscover
 
 
 def init_logger(name):
