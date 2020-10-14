@@ -4,36 +4,16 @@ import datetime
 import json
 import logging
 import os
-import re
 import secrets
-from collections import OrderedDict, deque
+from collections import OrderedDict, deque, defaultdict
 from functools import cached_property, lru_cache
 
-import numpy
-import pandas
 from bs4 import BeautifulSoup
-from sklearn.calibration import LabelEncoder
 
 from wta_scrapper.mixins import Mixins
-from wta_scrapper.models import Tournament
-
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
-TEMPLATES = os.listdir(os.path.join(BASE_DIR, 'html'))
-
-
-@lru_cache(maxsize=10)
-def autodiscover():
-    """
-    Autodiscover files in the HTML folder of the application
-    """
-    def wrapper(filename=None):
-        if filename is not None:
-            if filename in TEMPLATES:
-                _file = TEMPLATES[TEMPLATES.index(filename)]
-                return os.path.join(BASE_DIR, 'html', _file)
-        raise FileNotFoundError(f'The file you are looking for does not exist. {", ".join(TEMPLATES)}')
-    return wrapper
+from wta_scrapper.models import Query
+from wta_scrapper.utils import autodiscover, BASE_DIR
+from wta_scrapper.score import Score
 
 
 def init_logger(name):
@@ -49,197 +29,17 @@ def init_logger(name):
     return logger
 
 
-class Score:
-    """
-    Format the score in order for it to be compatible
-    with numpy
-
-    Parameters
-    ----------
-
-        score (str): the tennis score as a string
-        match state (bool, optional): the match result W or L. Defaults to None
-    """
-    def __init__(self, score:str, match_state=None):
-        self.score_is_valid = False
-
-        mappings = []
-        matched_regex = []
-
-        # n - normal set
-        # t - tie break
-        regexes = [
-            ('other', r'^(Bye|Retired)'),
-            # 5-1 Retired / 6-1 5-1 Retired
-            # ('n-r', r'^(\d\-\d)+\s?(Retired)$'),
-            # 6-1 6-1
-            ('n-n', r'^([6|7]\-[0-5])\s?([6|7]\-[0-5])$'),
-            # 1-6 1-6
-            ('n-n', r'^([0-5]\-[6|7])\s?([0-5]\-[6|7])$'),
-            # 7-6(4) 6-4
-            ('t-n', r'^(7\-6)(\d?)\s?(\d\-\d)$'),
-            # 7-6(4) 7-6(4)
-            ('t-t', r'^(7\-6)(\d?)\s?(\1)(\d?)$'),
-            # 6-7(4) 6-7(4)
-            ('t-t', r'^(\d?)(6\-7)\s?(\d?)(\2)$'),
-            # 6-3 3-6 6-7(6)
-            ('n-n-t', r'^(\d\-\d)\s?(\d\-\d)\s?(\d?)(6-7)$'),
-            # 7-6(4) (4)6-7 7-6(4)
-            ('t-t-t', r'^(7\-6)(\d?)\s?(\d?)(6-7)(\1)(\d?)$'),
-            # If no match at all or matches
-            # three set matches
-            ('n-n-n', r'^(\d\-\d)\s?(\d\-\d)\s?(\d\-\d)?')
-        ]
-
-        score_as_list = []
-        for mapping, regex in regexes:
-            is_match = re.match(regex, score)
-            if is_match:
-                mappings.append(mapping)
-                matched_regex.append(is_match)
-                score_as_list = list(is_match.groups())
-
-        # If multiple matches occur, the least accurate one
-        # is used by default and it contains a None value which
-        # should be filtered out
-        score = list(filter(lambda x: x is not None, score_as_list))
-
-        self.matched_regex = matched_regex
-
-        self.literal_score = score_as_list
-        self.match_state = match_state
-        self.score = self._get_values(self.literal_score)
-
-    def __repr__(self):
-        return f'{self.__class__.__name__}({self.score})'
-
-    def __str__(self):
-        return self.score_as_string
-
-    @property
-    def has_won_first_set(self):
-        return True if not self.has_lost_first_set else False
-
-    @property
-    def has_lost_first_set(self):
-        return (
-            (self.score[0, 1] == 6) |
-            (self.score[0, 1] == 7)
-        )
-
-    @property
-    def is_valid(self):
-        """
-        Determines whether the score was matched
-        correctly by the algorithm and that its
-        values were parsed correctly
-        """
-        return self.score_is_valid
-
-    def _get_values(self, score):
-        """
-        Parses the score and returns a numpy array
-        of each score value
-
-        Parameters
-        ----------
-
-            score (str): score a string
-        """
-        individual_numbers = []
-        try:
-            for value in score:
-                if value is not None:
-                    lhs, rhs = value.split('-')
-                    individual_numbers.append([lhs, rhs])
-        except:
-            self.score_is_valid = False
-            return []
-        else:
-            self.score_is_valid = True
-            return numpy.array(individual_numbers, dtype='int32')
-
-    @property
-    def number_of_tie_breaks(self):
-        pass
-
-    @property
-    def sets_won(self):
-        pass
-    
-    @property
-    def sets_lost(self):
-        pass
-
-    @property
-    def number_of_sets(self):
-        return list(self.score.shape)[0]
-   
-    @property
-    def number_of_sets_literal(self):
-        sets = self.number_of_sets
-
-        if sets == 1:
-            return 'one'
-        
-        if sets == 2:
-            return 'two'
-
-        if sets == 3:
-            return 'three'
-        
-        return None
-
-    @property
-    def number_of_games(self):
-        return self.score.sum()
-
-    @property
-    def has_won_no_games(self):
-        return numpy.array_equal([[0, 6], [0, 6]], self.score)
-
-    @property
-    def has_won_one_game(self):
-        return (
-            numpy.array_equal(numpy.array([[1, 6], [0, 6]]), self.score) |
-            numpy.array_equal(numpy.array([[0, 6], [1, 6]]), self.score)
-        )
-
-    @property
-    def score_as_string(self):
-        str_scores = []
-        scores = numpy.array(self.score.copy(), dtype='str')
-        for values in scores:
-            score = '-'.join(values)
-            str_scores.append(score)
-        return ' '.join(str_scores)
-
-    @property
-    def games_won(self):
-        number_of_sets = self.score.shape[0]
-        games_won = 0
-        for i in range(number_of_sets):
-            value = self.score[i, 0]
-            if value == 6 or value == 7:
-                value = self.score[i, 1]
-            games_won += value
-        return games_won
-
-    def copy(self):
-        klass = self.__class__(self.literal_score)
-        return klass
-
-
 class MatchScrapper(Mixins):
     def __init__(self, filename=None):
         self.explorer = autodiscover()
 
         self.logger = init_logger(self.__class__.__name__)
 
-        with open(self.explorer(filename=filename), 'r') as _file:
-            soup = BeautifulSoup(_file, 'html.parser')
+        if filename is not None:
+            with open(self.explorer(filename=filename), 'r') as _file:
+                soup = BeautifulSoup(_file, 'html.parser')
 
-        self.soup = soup
+            self.soup = soup
         self.tournaments = []
 
     def __enter__(self):
@@ -678,24 +478,6 @@ class MatchScrapper(Mixins):
         tournaments.append(kwargs)
         self.tournaments = tournaments
         self.logger.info('Adapting...')
-
-        # TODO: Parsing the score is kind of special,
-        # so limit this functionnaly for now to cases
-        # where the score has been parsed correctly.
-        # Otherwise, we'll just use the retrieved score
-        # for tournament in self.tournaments:
-        #     for key, values in tournament.items():
-        #         for match in values['matches']:
-        #             score = Score(match['details']['score'])
-        #             if score.is_valid: 
-        #                 match['details']['score'] = {
-        #                     'sets': score.score_as_string,
-        #                     'sets_literal': score.number_of_sets_literal,
-        #                     'first_set_result': score.has_won_first_set,
-        #                     'sets_count': score.number_of_sets,
-        #                     # 'games_count': score.number_of_games
-        #                 }
-
         self.logger.info((f'Found and built {len(self.tournaments) - 1} tournaments'))
         self.logger.info("Call 'write_values_to_file' if you wish to output the values to a file")
 
@@ -750,25 +532,53 @@ class MatchScrapper(Mixins):
         """
         Load a result file and return its data
         """
-        with open(filename, 'r') as f:
+        if not filename.endswith('json'):
+            filename = f'{filename}.json'
+
+        with open(f'data/{filename}', 'r') as f:
             data = json.load(f)
         self.logger.info(f'Loading {filename}')
-        return Tournament(data)
+        return Query(data)
+
+    def loads(self, *filenames):
+        """
+        Load multiple JSON files
+
+        Parameters
+        ----------
+
+            filenames (list): files to load
+        """
+        data = []
+        concat_tournaments = []
+        for name in filenames:
+            data.append(self.load(name))
+
+        for model in data:
+            for tournamnent in model.tournaments:
+                concat_tournaments.append(tournamnent)
+        
+        number_of_tournaments = len(concat_tournaments)
+        for i, tournament in enumerate(concat_tournaments):
+            tournament['id'] = number_of_tournaments - i
+        self.tournaments = concat_tournaments
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Parse an HTML page for WTA matches')
-    parser.add_argument('-n', '--filename', type=str, required=True)
+    parser.add_argument('-n', '--filename', type=str, required=True, help='The HTML file to parse')
     parser.add_argument('--write', type=bool, help='Write parsed values to a JSON or CSV file')
     parser.add_argument('--filter', type=str, required=True, help='A value used to filter the html tags on the WTA page')
     parser.add_argument('--format', type=str, choices=['json', 'csv'], help='The format of the output file')
 
-    parser.add_argument('--player-name', type=str, help='Name of the player to parse file for')
+    parser.add_argument('--player', type=str, help='Name of the player to parse file for')
     parser.add_argument('--year', type=int, help='Year of the tournaments')
     parsed_arguments = parser.parse_args()
     
     scrapper = MatchScrapper(filename=parsed_arguments.filename)
-    scrapper.build(parsed_arguments.filter)
-
-    # if parsed_arguments.write:
+    scrapper.build(
+        parsed_arguments.filter, 
+        player_name=parsed_arguments.player, 
+        year=parsed_arguments.year
+    )
     scrapper.write_values_to_file()

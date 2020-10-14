@@ -130,11 +130,22 @@ class Queryset:
         return new_queryset
 
 
-class Tournament(Queryset):
+class Query(Queryset):
     def __init__(self, dict_or_list, name=None, matches=False):
         super().__init__(dict_or_list)
 
     def get_matches(self, columns=[]):
+        """
+        Return a set of matches as dataframe
+
+        Parameters
+
+            columns (list, optional): columns to return. Defaults to [].
+
+        Returns
+
+            (dataframe): pandas dataframe object
+        """
         return self._construct_matches(self.tournaments, df_columns=columns)
 
     @property
