@@ -2,13 +2,38 @@ import csv
 import os
 from collections import Counter, OrderedDict
 from functools import cached_property
-from itertools import chain
+from itertools import chain, takewhile
 
 from wta_scrapper.utils import BASE_DIR
 
 SOURCE_PATH = os.path.join(BASE_DIR, 'sources')
 
-class SourceFile:
+class Reader:
+    def __init__(self, filename):
+        file_path = os.path.join(SOURCE_PATH, filename)
+        with open(file_path, 'r', encoding='utf-8-sig') as f:
+            data = csv.reader(f)
+            file_data = list(data).copy()
+        
+        self.file_data = file_data
+
+    def __repr__(self):
+        return f'{self.__class__.__name__}({self.__str__()})'
+
+    def __str__(self):
+        return str(list(self.file_data))
+
+    def __enter__(self):
+        return self.file_data
+
+    def __exit__(self, exc_type, exc_value, exc_traceback):
+        return False
+
+    def __getitem__(self, index):
+        return self.file_data.get(index, None)
+
+
+class SourceFile(Reader):
     """
     Opens a source to run various operations on it
 
@@ -17,12 +42,7 @@ class SourceFile:
         filename (str): the source file to open
     """
     def __init__(self, filename):
-        file_path = os.path.join(SOURCE_PATH, filename)
-        with open(file_path, 'r', encoding='utf-8-sig') as f:
-            data = csv.reader(f)
-            file_data = list(data).copy()
-        
-        self.file_data = file_data
+        super().__init__(filename)
         self.tournaments = self._populate
 
     def __repr__(self):
@@ -30,12 +50,6 @@ class SourceFile:
 
     def __str__(self):
         return str(self._populate)
-
-    def __enter__(self):
-        return self.file_data
-
-    def __exit__(self, exc_type, exc_value, exc_traceback):
-        return False
 
     def __getitem__(self, name):
         return self.tournaments[name]
@@ -109,6 +123,9 @@ class SourceFile:
             return f'Found {len(list(self.unique))} unique players.'
         return f'Found {len(list(self.every))} players.'
 
+    def contains(self, name):
+        return name in self.unique
+
     def count_by(self, tournament=None):
         """Count the amount of times each player
         appears in a specific column
@@ -125,3 +142,25 @@ class SourceFile:
             return Counter(self.tournaments.get(tournament, None))
         else:
             return Counter(self.every)
+
+
+class Players(Reader):
+    """
+    Adds a player to the players file
+
+    Args:
+        Reader ([type]): [description]
+    """
+    def __init__(self, player, nationality):
+        super().__init__('players.csv')
+        
+        def test_function(item):
+            _, name, _ = item
+            return name == player
+
+        result = takewhile(test_function, self.file_data)
+        with open('players.csv', 'a', newline='') as f:
+            if not list(result):
+                last_id = self.file_data[-1][0]
+                writer = csv.writer(f)
+                writer.writerow([last_id + 1, player, nationality])
