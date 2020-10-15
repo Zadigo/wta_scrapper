@@ -1,0 +1,1394 @@
+[
+    {
+        "Singapore": {
+            "matches": [
+                {
+                    "opp_name": "Simona Halep",
+                    "link": "//www.wtatennis.com/players/314320/simona-halep",
+                    "nationality": "ROU",
+                    "details": {
+                        "round": "Group",
+                        "opp_rank": "4",
+                        "result": "L",
+                        "score": "2-63-6"
+                    },
+                    "id": 3
+                },
+                {
+                    "opp_name": "Ana Ivanovic",
+                    "link": "//www.wtatennis.com/players/311710/ana-ivanovic",
+                    "nationality": "SRB",
+                    "details": {
+                        "round": "Group",
+                        "opp_rank": "7",
+                        "result": "L",
+                        "score": "1-63-6"
+                    },
+                    "id": 2
+                },
+                {
+                    "opp_name": "Serena Williams",
+                    "link": "//www.wtatennis.com/players/230234/serena-williams",
+                    "nationality": "USA",
+                    "details": {
+                        "round": "Group",
+                        "opp_rank": "1",
+                        "result": "L",
+                        "score": "1-61-6"
+                    },
+                    "id": 1
+                }
+            ],
+            "missing_fields": [],
+            "name": "Singapore",
+            "country": "Singapore",
+            "date": "2014-10-26",
+            "type": "Finals",
+            "surface": "Hard",
+            "ranking": {
+                "rank": 5,
+                "entered_as": 5,
+                "seed_title": null
+            },
+            "id": 25,
+            "year": 2014
+        }
+    },
+    {
+        "Linz": {
+            "matches": [
+                {
+                    "opp_name": "Tsvetana Pironkova",
+                    "link": "//www.wtatennis.com/players/311041/tsvetana-pironkova",
+                    "nationality": "BUL",
+                    "details": {
+                        "round": "R16",
+                        "opp_rank": "44",
+                        "result": "L",
+                        "score": "Walkover"
+                    },
+                    "id": 2
+                },
+                {
+                    "opp_name": "Patricia Mayr-Achleitner",
+                    "link": "//www.wtatennis.com/players/311044/patricia-mayr-achleitner",
+                    "nationality": "AUT",
+                    "details": {
+                        "round": "R32",
+                        "opp_rank": "100",
+                        "result": "W",
+                        "score": "6-46-1"
+                    },
+                    "id": 1
+                }
+            ],
+            "missing_fields": [],
+            "name": "Linz",
+            "country": "Austria",
+            "date": "2014-10-12",
+            "type": "International",
+            "surface": "Hard",
+            "ranking": {
+                "rank": 6,
+                "entered_as": 1,
+                "seed_title": null
+            },
+            "id": 24,
+            "year": 2014
+        }
+    },
+    {
+        "Beijing": {
+            "matches": [
+                {
+                    "opp_name": "Sabine Lisicki",
+                    "link": "//www.wtatennis.com/players/312520/sabine-lisicki",
+                    "nationality": "GER",
+                    "details": {
+                        "round": "R32",
+                        "opp_rank": "25",
+                        "result": "L",
+                        "score": "2-64-6"
+                    },
+                    "id": 2
+                },
+                {
+                    "opp_name": null,
+                    "link": null,
+                    "nationality": null,
+                    "details": {
+                        "round": "R64",
+                        "opp_rank": "-",
+                        "result": "-",
+                        "score": "Bye"
+                    },
+                    "id": 1
+                }
+            ],
+            "missing_fields": [],
+            "name": "Beijing",
+            "country": "China",
+            "date": "2014-10-05",
+            "type": "Premier Mandatory",
+            "surface": "Hard",
+            "ranking": {
+                "rank": 7,
+                "entered_as": 8,
+                "seed_title": null
+            },
+            "id": 23,
+            "year": 2014
+        }
+    },
+    {
+        "Wuhan": {
+            "matches": [
+                {
+                    "opp_name": "Petra Kvitova",
+                    "link": "//www.wtatennis.com/players/314206/petra-kvitova",
+                    "nationality": "CZE",
+                    "details": {
+                        "round": "Final",
+                        "opp_rank": "3",
+                        "result": "L",
+                        "score": "3-64-6"
+                    },
+                    "id": 6
+                },
+                {
+                    "opp_name": "Caroline Wozniacki",
+                    "link": "//www.wtatennis.com/players/313402/caroline-wozniacki",
+                    "nationality": "DEN",
+                    "details": {
+                        "round": "Semi",
+                        "opp_rank": "7",
+                        "result": "W",
+                        "score": "6-26-3"
+                    },
+                    "id": 5
+                },
+                {
+                    "opp_name": "Aliz\u00c3\u00a9 Cornet",
+                    "link": "//www.wtatennis.com/players/312121/aliz-cornet",
+                    "nationality": "FRA",
+                    "details": {
+                        "round": "Quarter",
+                        "opp_rank": "21",
+                        "result": "W",
+                        "score": "6-37-5"
+                    },
+                    "id": 4
+                },
+                {
+                    "opp_name": "Alison Riske",
+                    "link": "//www.wtatennis.com/players/312850/alison-riske",
+                    "nationality": "USA",
+                    "details": {
+                        "round": "R16",
+                        "opp_rank": "67",
+                        "result": "W",
+                        "score": "6-26-3"
+                    },
+                    "id": 3
+                },
+                {
+                    "opp_name": "Mona Barthel",
+                    "link": "//www.wtatennis.com/players/315365/mona-barthel",
+                    "nationality": "GER",
+                    "details": {
+                        "round": "R32",
+                        "opp_rank": "55",
+                        "result": "W",
+                        "score": "4-66-36-4"
+                    },
+                    "id": 2
+                },
+                {
+                    "opp_name": null,
+                    "link": null,
+                    "nationality": null,
+                    "details": {
+                        "round": "R64",
+                        "opp_rank": "-",
+                        "result": "-",
+                        "score": "Bye"
+                    },
+                    "id": 1
+                }
+            ],
+            "missing_fields": [],
+            "name": "Wuhan",
+            "country": "China",
+            "date": "2014-09-27",
+            "type": "Premier 5",
+            "surface": "Hard",
+            "ranking": {
+                "rank": 9,
+                "entered_as": 6,
+                "seed_title": null
+            },
+            "id": 22,
+            "year": 2014
+        }
+    },
+    {
+        "Flushing Meadows": {
+            "matches": [
+                {
+                    "opp_name": "Ekaterina Makarova",
+                    "link": "//www.wtatennis.com/players/311604/ekaterina-makarova",
+                    "nationality": "RUS",
+                    "details": {
+                        "round": "R16",
+                        "opp_rank": "18",
+                        "result": "L",
+                        "score": "62-74-6"
+                    },
+                    "id": 4
+                },
+                {
+                    "opp_name": "Barbora Strycova",
+                    "link": "//www.wtatennis.com/players/190879/barbora-strycova",
+                    "nationality": "CZE",
+                    "details": {
+                        "round": "R32",
+                        "opp_rank": "29",
+                        "result": "W",
+                        "score": "6-262-76-4"
+                    },
+                    "id": 3
+                },
+                {
+                    "opp_name": "Sorana Cirstea",
+                    "link": "//www.wtatennis.com/players/312469/sorana-cirstea",
+                    "nationality": "ROU",
+                    "details": {
+                        "round": "R64",
+                        "opp_rank": "80",
+                        "result": "W",
+                        "score": "6-264-76-4"
+                    },
+                    "id": 2
+                },
+                {
+                    "opp_name": "Olga Govortsova",
+                    "link": "//www.wtatennis.com/players/311243/olga-govortsova",
+                    "nationality": "BLR",
+                    "details": {
+                        "round": "R128",
+                        "opp_rank": "117",
+                        "result": "W",
+                        "score": "6-26-1"
+                    },
+                    "id": 1
+                }
+            ],
+            "missing_fields": [],
+            "name": "Flushing Meadows",
+            "country": "Usa, Ny",
+            "date": "2014-09-07",
+            "type": "Grand Slam",
+            "surface": "Hard",
+            "ranking": {
+                "rank": 8,
+                "entered_as": 7,
+                "seed_title": null
+            },
+            "id": 21,
+            "year": 2014
+        }
+    },
+    {
+        "New Haven": {
+            "matches": [
+                {
+                    "opp_name": "Samantha Stosur",
+                    "link": "//www.wtatennis.com/players/190787/samantha-stosur",
+                    "nationality": "AUS",
+                    "details": {
+                        "round": "R16",
+                        "opp_rank": "25",
+                        "result": "L",
+                        "score": "2-62-6"
+                    },
+                    "id": 2
+                },
+                {
+                    "opp_name": "Bojana Jovanovski Petrovic",
+                    "link": "//www.wtatennis.com/players/314369/bojana-jovanovski-petrovic",
+                    "nationality": "SRB",
+                    "details": {
+                        "round": "R32",
+                        "opp_rank": "35",
+                        "result": "W",
+                        "score": "6-16-1"
+                    },
+                    "id": 1
+                }
+            ],
+            "missing_fields": [],
+            "name": "New Haven",
+            "country": "Usa, Ct",
+            "date": "2014-08-23",
+            "type": "Premier",
+            "surface": "Hard",
+            "ranking": {
+                "rank": 8,
+                "entered_as": 3,
+                "seed_title": null
+            },
+            "id": 20,
+            "year": 2014
+        }
+    },
+    {
+        "Cincinnati": {
+            "matches": [
+                {
+                    "opp_name": "Svetlana Kuznetsova",
+                    "link": "//www.wtatennis.com/players/110552/svetlana-kuznetsova",
+                    "nationality": "RUS",
+                    "details": {
+                        "round": "R32",
+                        "opp_rank": "24",
+                        "result": "L",
+                        "score": "4-66-32-6"
+                    },
+                    "id": 2
+                },
+                {
+                    "opp_name": null,
+                    "link": null,
+                    "nationality": null,
+                    "details": {
+                        "round": "R64",
+                        "opp_rank": "-",
+                        "result": "-",
+                        "score": "Bye"
+                    },
+                    "id": 1
+                }
+            ],
+            "missing_fields": [],
+            "name": "Cincinnati",
+            "country": "Usa, Oh",
+            "date": "2014-08-17",
+            "type": "Premier 5",
+            "surface": "Hard",
+            "ranking": {
+                "rank": 8,
+                "entered_as": 7,
+                "seed_title": null
+            },
+            "id": 19,
+            "year": 2014
+        }
+    },
+    {
+        "Montreal": {
+            "matches": [
+                {
+                    "opp_name": "Shelby Rogers",
+                    "link": "//www.wtatennis.com/players/317421/shelby-rogers",
+                    "nationality": "USA",
+                    "details": {
+                        "round": "R32",
+                        "opp_rank": "113",
+                        "result": "L",
+                        "score": "0-66-20-6"
+                    },
+                    "id": 2
+                },
+                {
+                    "opp_name": null,
+                    "link": null,
+                    "nationality": null,
+                    "details": {
+                        "round": "R64",
+                        "opp_rank": "-",
+                        "result": "-",
+                        "score": "Bye"
+                    },
+                    "id": 1
+                }
+            ],
+            "missing_fields": [],
+            "name": "Montreal",
+            "country": "Canada",
+            "date": "2014-08-10",
+            "type": "Premier 5",
+            "surface": "Hard",
+            "ranking": {
+                "rank": 8,
+                "entered_as": 5,
+                "seed_title": null
+            },
+            "id": 18,
+            "year": 2014
+        }
+    },
+    {
+        "Wimbledon": {
+            "matches": [
+                {
+                    "opp_name": "Petra Kvitova",
+                    "link": "//www.wtatennis.com/players/314206/petra-kvitova",
+                    "nationality": "CZE",
+                    "details": {
+                        "round": "Final",
+                        "opp_rank": "6",
+                        "result": "L",
+                        "score": "3-60-6"
+                    },
+                    "id": 7
+                },
+                {
+                    "opp_name": "Simona Halep",
+                    "link": "//www.wtatennis.com/players/314320/simona-halep",
+                    "nationality": "ROU",
+                    "details": {
+                        "round": "Semi",
+                        "opp_rank": "3",
+                        "result": "W",
+                        "score": "7-656-2"
+                    },
+                    "id": 6
+                },
+                {
+                    "opp_name": "Angelique Kerber",
+                    "link": "//www.wtatennis.com/players/311470/angelique-kerber",
+                    "nationality": "GER",
+                    "details": {
+                        "round": "Quarter",
+                        "opp_rank": "7",
+                        "result": "W",
+                        "score": "6-36-4"
+                    },
+                    "id": 5
+                },
+                {
+                    "opp_name": "Aliz\u00c3\u00a9 Cornet",
+                    "link": "//www.wtatennis.com/players/312121/aliz-cornet",
+                    "nationality": "FRA",
+                    "details": {
+                        "round": "R16",
+                        "opp_rank": "24",
+                        "result": "W",
+                        "score": "7-657-5"
+                    },
+                    "id": 4
+                },
+                {
+                    "opp_name": "Andrea Petkovic",
+                    "link": "//www.wtatennis.com/players/310770/andrea-petkovic",
+                    "nationality": "GER",
+                    "details": {
+                        "round": "R32",
+                        "opp_rank": "20",
+                        "result": "W",
+                        "score": "6-36-4"
+                    },
+                    "id": 3
+                },
+                {
+                    "opp_name": "S\u00c3\u00adlvia Soler-Espinosa",
+                    "link": "//www.wtatennis.com/players/311493/s-lvia-soler-espinosa",
+                    "nationality": "ESP",
+                    "details": {
+                        "round": "R64",
+                        "opp_rank": "75",
+                        "result": "W",
+                        "score": "7-56-1"
+                    },
+                    "id": 2
+                },
+                {
+                    "opp_name": "Daniela Hantuchova",
+                    "link": "//www.wtatennis.com/players/80394/daniela-hantuchova",
+                    "nationality": "SVK",
+                    "details": {
+                        "round": "R128",
+                        "opp_rank": "34",
+                        "result": "W",
+                        "score": "7-57-5"
+                    },
+                    "id": 1
+                }
+            ],
+            "missing_fields": [],
+            "name": "Wimbledon",
+            "country": "Great Britain",
+            "date": "2014-07-05",
+            "type": "Grand Slam",
+            "surface": "Grass",
+            "ranking": {
+                "rank": 13,
+                "entered_as": 13,
+                "seed_title": null
+            },
+            "id": 17,
+            "year": 2014
+        }
+    },
+    {
+        "S-Hertogenbosch": {
+            "matches": [
+                {
+                    "opp_name": "Vania King",
+                    "link": "//www.wtatennis.com/players/311550/vania-king",
+                    "nationality": "USA",
+                    "details": {
+                        "round": "R32",
+                        "opp_rank": "75",
+                        "result": "L",
+                        "score": "6-23-63-6"
+                    },
+                    "id": 1
+                }
+            ],
+            "missing_fields": [],
+            "name": "S-Hertogenbosch",
+            "country": "Netherlands",
+            "date": "2014-06-21",
+            "type": "International",
+            "surface": "Grass",
+            "ranking": {
+                "rank": 13,
+                "entered_as": 3,
+                "seed_title": null
+            },
+            "id": 16,
+            "year": 2014
+        }
+    },
+    {
+        "Paris": {
+            "matches": [
+                {
+                    "opp_name": "Maria Sharapova",
+                    "link": "//www.wtatennis.com/players/310137/maria-sharapova",
+                    "nationality": "RUS",
+                    "details": {
+                        "round": "Semi",
+                        "opp_rank": "8",
+                        "result": "L",
+                        "score": "6-45-72-6"
+                    },
+                    "id": 6
+                },
+                {
+                    "opp_name": "Carla Su\u00c3\u00a1rez Navarro",
+                    "link": "//www.wtatennis.com/players/311338/carla-su-rez-navarro",
+                    "nationality": "ESP",
+                    "details": {
+                        "round": "Quarter",
+                        "opp_rank": "15",
+                        "result": "W",
+                        "score": "7-642-67-5"
+                    },
+                    "id": 5
+                },
+                {
+                    "opp_name": "Angelique Kerber",
+                    "link": "//www.wtatennis.com/players/311470/angelique-kerber",
+                    "nationality": "GER",
+                    "details": {
+                        "round": "R16",
+                        "opp_rank": "9",
+                        "result": "W",
+                        "score": "6-16-2"
+                    },
+                    "id": 4
+                },
+                {
+                    "opp_name": "Johanna Larsson",
+                    "link": "//www.wtatennis.com/players/311593/johanna-larsson",
+                    "nationality": "SWE",
+                    "details": {
+                        "round": "R32",
+                        "opp_rank": "99",
+                        "result": "W",
+                        "score": "7-56-4"
+                    },
+                    "id": 3
+                },
+                {
+                    "opp_name": "Julia Goerges",
+                    "link": "//www.wtatennis.com/players/313381/julia-goerges",
+                    "nationality": "GER",
+                    "details": {
+                        "round": "R64",
+                        "opp_rank": "107",
+                        "result": "W",
+                        "score": "2-66-26-1"
+                    },
+                    "id": 2
+                },
+                {
+                    "opp_name": "Shahar Peer",
+                    "link": "//www.wtatennis.com/players/311168/shahar-peer",
+                    "nationality": "ISR",
+                    "details": {
+                        "round": "R128",
+                        "opp_rank": "88",
+                        "result": "W",
+                        "score": "6-06-2"
+                    },
+                    "id": 1
+                }
+            ],
+            "missing_fields": [],
+            "name": "Paris",
+            "country": "France",
+            "date": "2014-06-07",
+            "type": "Grand Slam",
+            "surface": "Clay",
+            "ranking": {
+                "rank": 16,
+                "entered_as": 18,
+                "seed_title": null
+            },
+            "id": 15,
+            "year": 2014
+        }
+    },
+    {
+        "N\u00e3\u0153rnberg": {
+            "matches": [
+                {
+                    "opp_name": "Karolina Pliskova",
+                    "link": "//www.wtatennis.com/players/313974/karolina-pliskova",
+                    "nationality": "CZE",
+                    "details": {
+                        "round": "Final",
+                        "opp_rank": "64",
+                        "result": "W",
+                        "score": "6-24-66-3"
+                    },
+                    "id": 5
+                },
+                {
+                    "opp_name": "Karin Knapp",
+                    "link": "//www.wtatennis.com/players/311299/karin-knapp",
+                    "nationality": "ITA",
+                    "details": {
+                        "round": "Semi",
+                        "opp_rank": "52",
+                        "result": "W",
+                        "score": "6-46-3"
+                    },
+                    "id": 4
+                },
+                {
+                    "opp_name": "Yaroslava Shvedova",
+                    "link": "//www.wtatennis.com/players/311137/yaroslava-shvedova",
+                    "nationality": "KAZ",
+                    "details": {
+                        "round": "Quarter",
+                        "opp_rank": "72",
+                        "result": "W",
+                        "score": "7-637-66"
+                    },
+                    "id": 3
+                },
+                {
+                    "opp_name": "Anastasia Rodionova",
+                    "link": "//www.wtatennis.com/players/180356/anastasia-rodionova",
+                    "nationality": "AUS",
+                    "details": {
+                        "round": "R16",
+                        "opp_rank": "217",
+                        "result": "W",
+                        "score": "6-06-1"
+                    },
+                    "id": 2
+                },
+                {
+                    "opp_name": "Barbora Strycova",
+                    "link": "//www.wtatennis.com/players/190879/barbora-strycova",
+                    "nationality": "CZE",
+                    "details": {
+                        "round": "R32",
+                        "opp_rank": "63",
+                        "result": "W",
+                        "score": "6-06-3"
+                    },
+                    "id": 1
+                }
+            ],
+            "missing_fields": [],
+            "name": "N\u00e3\u0153rnberg",
+            "country": "Germany",
+            "date": "2014-05-24",
+            "type": "International",
+            "surface": "Clay",
+            "ranking": {
+                "rank": 19,
+                "entered_as": 2,
+                "seed_title": null
+            },
+            "id": 14,
+            "year": 2014
+        }
+    },
+    {
+        "Rome": {
+            "matches": [
+                {
+                    "opp_name": "Francesca Schiavone",
+                    "link": "//www.wtatennis.com/players/190666/francesca-schiavone",
+                    "nationality": "ITA",
+                    "details": {
+                        "round": "R64",
+                        "opp_rank": "61",
+                        "result": "L",
+                        "score": "4-62-6"
+                    },
+                    "id": 1
+                }
+            ],
+            "missing_fields": [],
+            "name": "Rome",
+            "country": "Italy",
+            "date": "2014-05-18",
+            "type": "Premier 5",
+            "surface": "Clay",
+            "ranking": {
+                "rank": 20,
+                "entered_as": 17,
+                "seed_title": null
+            },
+            "id": 13,
+            "year": 2014
+        }
+    },
+    {
+        "Madird": {
+            "matches": [
+                {
+                    "opp_name": "Agnieszka Radwanska",
+                    "link": "//www.wtatennis.com/players/312251/agnieszka-radwanska",
+                    "nationality": "POL",
+                    "details": {
+                        "round": "R64",
+                        "opp_rank": "3",
+                        "result": "L",
+                        "score": "63-72-6"
+                    },
+                    "id": 1
+                }
+            ],
+            "missing_fields": [],
+            "name": "Madird",
+            "country": "Spain",
+            "date": "2014-05-11",
+            "type": "Premier Mandatory",
+            "surface": "Clay",
+            "ranking": {
+                "rank": 18,
+                "entered_as": null,
+                "seed_title": null
+            },
+            "id": 12,
+            "year": 2014
+        }
+    },
+    {
+        "Oeiras (Estoril)": {
+            "matches": [
+                {
+                    "opp_name": "Svetlana Kuznetsova",
+                    "link": "//www.wtatennis.com/players/110552/svetlana-kuznetsova",
+                    "nationality": "RUS",
+                    "details": {
+                        "round": "Quarter",
+                        "opp_rank": "29",
+                        "result": "L",
+                        "score": "4-61-6"
+                    },
+                    "id": 3
+                },
+                {
+                    "opp_name": "Yaroslava Shvedova",
+                    "link": "//www.wtatennis.com/players/311137/yaroslava-shvedova",
+                    "nationality": "KAZ",
+                    "details": {
+                        "round": "R16",
+                        "opp_rank": "65",
+                        "result": "W",
+                        "score": "6-46-2"
+                    },
+                    "id": 2
+                },
+                {
+                    "opp_name": "Alisa Kleybanova",
+                    "link": "//www.wtatennis.com/players/311777/alisa-kleybanova",
+                    "nationality": "RUS",
+                    "details": {
+                        "round": "R32",
+                        "opp_rank": "87",
+                        "result": "W",
+                        "score": "6-46-1"
+                    },
+                    "id": 1
+                }
+            ],
+            "missing_fields": [],
+            "name": "Oeiras (Estoril)",
+            "country": "Portugal",
+            "date": "2014-05-03",
+            "type": "International",
+            "surface": "Clay",
+            "ranking": {
+                "rank": 18,
+                "entered_as": 2,
+                "seed_title": null
+            },
+            "id": 11,
+            "year": 2014
+        }
+    },
+    {
+        "Quebec City": {
+            "matches": [
+                {
+                    "opp_name": "Kristina Kucova",
+                    "link": "//www.wtatennis.com/players/312673/kristina-kucova",
+                    "nationality": "SVK",
+                    "details": {
+                        "round": "R2",
+                        "opp_rank": "137",
+                        "result": "W",
+                        "score": "7-602-66-1"
+                    },
+                    "id": 2
+                },
+                {
+                    "opp_name": "Jana Cepelova",
+                    "link": "//www.wtatennis.com/players/316774/jana-cepelova",
+                    "nationality": "SVK",
+                    "details": {
+                        "round": "R2",
+                        "opp_rank": "52",
+                        "result": "W",
+                        "score": "7-666-3"
+                    },
+                    "id": 1
+                }
+            ],
+            "missing_fields": [],
+            "name": "Quebec City",
+            "country": "Canada",
+            "date": "2014-04-20",
+            "type": "ITF",
+            "surface": "6M/0Q/2D",
+            "ranking": {
+                "rank": 18,
+                "entered_as": null,
+                "seed_title": null
+            },
+            "id": 10,
+            "year": 2014
+        }
+    },
+    {
+        "Charleston": {
+            "matches": [
+                {
+                    "opp_name": "Andrea Petkovic",
+                    "link": "//www.wtatennis.com/players/310770/andrea-petkovic",
+                    "nationality": "GER",
+                    "details": {
+                        "round": "Semi",
+                        "opp_rank": "40",
+                        "result": "L",
+                        "score": "6-13-65-7"
+                    },
+                    "id": 5
+                },
+                {
+                    "opp_name": "Jelena Jankovic",
+                    "link": "//www.wtatennis.com/players/100153/jelena-jankovic",
+                    "nationality": "SRB",
+                    "details": {
+                        "round": "Quarter",
+                        "opp_rank": "8",
+                        "result": "W",
+                        "score": "6-34-66-3"
+                    },
+                    "id": 4
+                },
+                {
+                    "opp_name": "Venus Williams",
+                    "link": "//www.wtatennis.com/players/230220/venus-williams",
+                    "nationality": "USA",
+                    "details": {
+                        "round": "R16",
+                        "opp_rank": "28",
+                        "result": "W",
+                        "score": "7-662-66-4"
+                    },
+                    "id": 3
+                },
+                {
+                    "opp_name": "Alla Kudryavtseva",
+                    "link": "//www.wtatennis.com/players/311362/alla-kudryavtseva",
+                    "nationality": "RUS",
+                    "details": {
+                        "round": "R32",
+                        "opp_rank": "117",
+                        "result": "W",
+                        "score": "6-26-0"
+                    },
+                    "id": 2
+                },
+                {
+                    "opp_name": null,
+                    "link": null,
+                    "nationality": null,
+                    "details": {
+                        "round": "R64",
+                        "opp_rank": "-",
+                        "result": "-",
+                        "score": "Bye"
+                    },
+                    "id": 1
+                }
+            ],
+            "missing_fields": [],
+            "name": "Charleston",
+            "country": "Usa, Sc",
+            "date": "2014-04-06",
+            "type": "Premier",
+            "surface": "Clay",
+            "ranking": {
+                "rank": 20,
+                "entered_as": 6,
+                "seed_title": null
+            },
+            "id": 9,
+            "year": 2014
+        }
+    },
+    {
+        "Miami": {
+            "matches": [
+                {
+                    "opp_name": "Elina Svitolina",
+                    "link": "//www.wtatennis.com/players/316738/elina-svitolina",
+                    "nationality": "UKR",
+                    "details": {
+                        "round": "R64",
+                        "opp_rank": "42",
+                        "result": "L",
+                        "score": "6-11-62-6"
+                    },
+                    "id": 2
+                },
+                {
+                    "opp_name": null,
+                    "link": null,
+                    "nationality": null,
+                    "details": {
+                        "round": "R128",
+                        "opp_rank": "-",
+                        "result": "-",
+                        "score": "Bye"
+                    },
+                    "id": 1
+                }
+            ],
+            "missing_fields": [],
+            "name": "Miami",
+            "country": "Usa, Fl",
+            "date": "2014-03-29",
+            "type": "Premier Mandatory",
+            "surface": "Hard",
+            "ranking": {
+                "rank": 19,
+                "entered_as": 18,
+                "seed_title": null
+            },
+            "id": 8,
+            "year": 2014
+        }
+    },
+    {
+        "Indian Wells": {
+            "matches": [
+                {
+                    "opp_name": "Simona Halep",
+                    "link": "//www.wtatennis.com/players/314320/simona-halep",
+                    "nationality": "ROU",
+                    "details": {
+                        "round": "R16",
+                        "opp_rank": "7",
+                        "result": "L",
+                        "score": "2-66-14-6"
+                    },
+                    "id": 4
+                },
+                {
+                    "opp_name": "Sara Errani",
+                    "link": "//www.wtatennis.com/players/310761/sara-errani",
+                    "nationality": "ITA",
+                    "details": {
+                        "round": "R32",
+                        "opp_rank": "10",
+                        "result": "W",
+                        "score": "6-36-3"
+                    },
+                    "id": 3
+                },
+                {
+                    "opp_name": "Shuai Peng",
+                    "link": "//www.wtatennis.com/players/160471/shuai-peng",
+                    "nationality": "CHN",
+                    "details": {
+                        "round": "R64",
+                        "opp_rank": "40",
+                        "result": "W",
+                        "score": "6-26-2"
+                    },
+                    "id": 2
+                },
+                {
+                    "opp_name": null,
+                    "link": null,
+                    "nationality": null,
+                    "details": {
+                        "round": "R128",
+                        "opp_rank": "-",
+                        "result": "-",
+                        "score": "Bye"
+                    },
+                    "id": 1
+                }
+            ],
+            "missing_fields": [],
+            "name": "Indian Wells",
+            "country": "Usa, Ca",
+            "date": "2014-03-16",
+            "type": "Premier Mandatory",
+            "surface": "Hard",
+            "ranking": {
+                "rank": 19,
+                "entered_as": 18,
+                "seed_title": null
+            },
+            "id": 7,
+            "year": 2014
+        }
+    },
+    {
+        "Acapulco": {
+            "matches": [
+                {
+                    "opp_name": "Caroline Garcia",
+                    "link": "//www.wtatennis.com/players/315391/caroline-garcia",
+                    "nationality": "FRA",
+                    "details": {
+                        "round": "Quarter",
+                        "opp_rank": "89",
+                        "result": "L",
+                        "score": "6-34-61-6"
+                    },
+                    "id": 3
+                },
+                {
+                    "opp_name": "Lara Arruabarrena",
+                    "link": "//www.wtatennis.com/players/315296/lara-arruabarrena",
+                    "nationality": "ESP",
+                    "details": {
+                        "round": "R16",
+                        "opp_rank": "147",
+                        "result": "W",
+                        "score": "7-56-2"
+                    },
+                    "id": 2
+                },
+                {
+                    "opp_name": "Shahar Peer",
+                    "link": "//www.wtatennis.com/players/311168/shahar-peer",
+                    "nationality": "ISR",
+                    "details": {
+                        "round": "R32",
+                        "opp_rank": "85",
+                        "result": "W",
+                        "score": "6-26-2"
+                    },
+                    "id": 1
+                }
+            ],
+            "missing_fields": [],
+            "name": "Acapulco",
+            "country": "Mexico",
+            "date": "2014-03-01",
+            "type": "International",
+            "surface": "Hard",
+            "ranking": {
+                "rank": 19,
+                "entered_as": 2,
+                "seed_title": null
+            },
+            "id": 6,
+            "year": 2014
+        }
+    },
+    {
+        "Dubai": {
+            "matches": [
+                {
+                    "opp_name": "Annika Beck",
+                    "link": "//www.wtatennis.com/players/316979/annika-beck",
+                    "nationality": "GER",
+                    "details": {
+                        "round": "Qual. R3",
+                        "opp_rank": "50",
+                        "result": "L",
+                        "score": "1-64-6"
+                    },
+                    "id": 3
+                },
+                {
+                    "opp_name": "Tsvetana Pironkova",
+                    "link": "//www.wtatennis.com/players/311041/tsvetana-pironkova",
+                    "nationality": "BUL",
+                    "details": {
+                        "round": "Qual. R2",
+                        "opp_rank": "48",
+                        "result": "W",
+                        "score": "6-26-4"
+                    },
+                    "id": 2
+                },
+                {
+                    "opp_name": "Vera Dushevina",
+                    "link": "//www.wtatennis.com/players/310625/vera-dushevina",
+                    "nationality": "RUS",
+                    "details": {
+                        "round": "Qual. R1",
+                        "opp_rank": "139",
+                        "result": "W",
+                        "score": "5-76-36-3"
+                    },
+                    "id": 1
+                }
+            ],
+            "missing_fields": [],
+            "name": "Dubai",
+            "country": "United Arab Emirates",
+            "date": "2014-02-22",
+            "type": "Premier",
+            "surface": "Hard",
+            "ranking": {
+                "rank": 19,
+                "entered_as": 1,
+                "seed_title": null
+            },
+            "id": 5,
+            "year": 2014
+        }
+    },
+    {
+        "Doha": {
+            "matches": [
+                {
+                    "opp_name": "Bethanie Mattek-Sands",
+                    "link": "//www.wtatennis.com/players/130713/bethanie-mattek-sands",
+                    "nationality": "USA",
+                    "details": {
+                        "round": "R64",
+                        "opp_rank": "42",
+                        "result": "L",
+                        "score": "5-71-6"
+                    },
+                    "id": 1
+                }
+            ],
+            "missing_fields": [],
+            "name": "Doha",
+            "country": "Qatar",
+            "date": "2014-02-16",
+            "type": "Premier 5",
+            "surface": "Hard",
+            "ranking": {
+                "rank": 19,
+                "entered_as": 15,
+                "seed_title": null
+            },
+            "id": 4,
+            "year": 2014
+        }
+    },
+    {
+        "Montreal": {
+            "matches": [
+                {
+                    "opp_name": "Jovana Jovic",
+                    "link": "//www.wtatennis.com/players/317351/jovana-jovic",
+                    "nationality": "SRB",
+                    "details": {
+                        "round": "R1",
+                        "opp_rank": "149",
+                        "result": "W",
+                        "score": "6-16-0"
+                    },
+                    "id": 2
+                },
+                {
+                    "opp_name": "Vesna Dolonc",
+                    "link": "//www.wtatennis.com/players/313653/vesna-dolonc",
+                    "nationality": "SRB",
+                    "details": {
+                        "round": "R1",
+                        "opp_rank": "117",
+                        "result": "W",
+                        "score": "6-06-3"
+                    },
+                    "id": 1
+                }
+            ],
+            "missing_fields": [],
+            "name": "Montreal",
+            "country": "Canada",
+            "date": "2014-02-09",
+            "type": "ITF",
+            "surface": "6M/0Q/2D",
+            "ranking": {
+                "rank": 19,
+                "entered_as": null,
+                "seed_title": null
+            },
+            "id": 3,
+            "year": 2014
+        }
+    },
+    {
+        "Melbourne": {
+            "matches": [
+                {
+                    "opp_name": "Na Li",
+                    "link": "//www.wtatennis.com/players/120330/na-li",
+                    "nationality": "CHN",
+                    "details": {
+                        "round": "Semi",
+                        "opp_rank": "4",
+                        "result": "L",
+                        "score": "2-64-6"
+                    },
+                    "id": 6
+                },
+                {
+                    "opp_name": "Ana Ivanovic",
+                    "link": "//www.wtatennis.com/players/311710/ana-ivanovic",
+                    "nationality": "SRB",
+                    "details": {
+                        "round": "Quarter",
+                        "opp_rank": "14",
+                        "result": "W",
+                        "score": "5-77-56-2"
+                    },
+                    "id": 5
+                },
+                {
+                    "opp_name": "Casey Dellacqua",
+                    "link": "//www.wtatennis.com/players/310730/casey-dellacqua",
+                    "nationality": "AUS",
+                    "details": {
+                        "round": "R16",
+                        "opp_rank": "120",
+                        "result": "W",
+                        "score": "65-76-26-0"
+                    },
+                    "id": 4
+                },
+                {
+                    "opp_name": "Lauren Davis",
+                    "link": "//www.wtatennis.com/players/317414/lauren-davis",
+                    "nationality": "USA",
+                    "details": {
+                        "round": "R32",
+                        "opp_rank": "68",
+                        "result": "W",
+                        "score": "6-26-2"
+                    },
+                    "id": 3
+                },
+                {
+                    "opp_name": "Virginie Razzano",
+                    "link": "//www.wtatennis.com/players/180384/virginie-razzano",
+                    "nationality": "FRA",
+                    "details": {
+                        "round": "R64",
+                        "opp_rank": "100",
+                        "result": "W",
+                        "score": "6-27-610"
+                    },
+                    "id": 2
+                },
+                {
+                    "opp_name": "Hao Chen Tang",
+                    "link": "//www.wtatennis.com/players/317359/hao-chen-tang",
+                    "nationality": "CHN",
+                    "details": {
+                        "round": "R128",
+                        "opp_rank": "487",
+                        "result": "W",
+                        "score": "7-56-1"
+                    },
+                    "id": 1
+                }
+            ],
+            "missing_fields": [],
+            "name": "Melbourne",
+            "country": "Australia",
+            "date": "2014-01-25",
+            "type": "Grand Slam",
+            "surface": "Hard",
+            "ranking": {
+                "rank": 31,
+                "entered_as": 30,
+                "seed_title": null
+            },
+            "id": 2,
+            "year": 2014
+        }
+    },
+    {
+        "Sydney": {
+            "matches": [
+                {
+                    "opp_name": "Bethanie Mattek-Sands",
+                    "link": "//www.wtatennis.com/players/130713/bethanie-mattek-sands",
+                    "nationality": "USA",
+                    "details": {
+                        "round": "R32",
+                        "opp_rank": "48",
+                        "result": "L",
+                        "score": "4-63-6"
+                    },
+                    "id": 1
+                }
+            ],
+            "missing_fields": [],
+            "name": "Sydney",
+            "country": "Australia",
+            "date": "2014-01-10",
+            "type": "Premier",
+            "surface": "Hard",
+            "ranking": {
+                "rank": 31,
+                "entered_as": null,
+                "seed_title": null
+            },
+            "id": 1,
+            "year": 2014
+        }
+    },
+    {
+        "player_name": "Eugenie Bouchard",
+        "year": 2014,
+        "date_as_string": true
+    }
+]
